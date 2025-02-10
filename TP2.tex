@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Preparation TP2 : Tests d’hypothèses}
+\author{Oumaima EL BOUROUMI, Matthieu Gomes}
+\date{02/02/2025}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Préparation}
+
+On considère un échantillon \( (X_1, \dots, X_n) \) constitué de \( n \) variables aléatoires indépendantes et identiquement distribuées selon une loi inconnue. Cet échantillon représente les résultats obtenus à un contrôle de synthèse de Statistiques. On en souhaite une étude statistique.
+
+\subsection{1. Coefficient d’asymétrie et kurtosis}
+
+Le \textbf{coefficient d’asymétrie} (ou skewness) mesure la symétrie d’une distribution par rapport à sa moyenne. Il est défini par :
+
+\[
+\gamma_1 = \frac{E[(X - \mu)^3]}{\sigma^3}
+\]
+
+où :
+- \( \mu \) est la moyenne de la distribution,
+- \( \sigma \) est l’écart-type,
+- \( E[(X - \mu)^3] \) est le moment centré d’ordre 3.
+
+Dans le cas d’une loi normale \( \mathcal{N}(\mu, \sigma^2) \), on peut démontrer que \( \gamma_1 = 0 \), ce qui signifie que la loi normale est parfaitement symétrique.
+
+Le \textbf{coefficient de kurtosis} est donné par :
+
+\[
+\gamma_2 = \frac{E[(X - \mu)^4]}{\sigma^4} - 3
+\]
+
+où \( 3 \) est soustrait pour que la loi normale ait un kurtosis de 0.
+
+\subsection{2. Test d’adéquation du \( \chi^2 \)}
+
+Nous souhaitons savoir si l’échantillon \( (X_1, \dots, X_n) \) suit une loi normale \( \mathcal{N}(\mu, \sigma^2) \). Nous réalisons un test du \( \chi^2 \).
+
+\begin{enumerate}
+    \item[(A)] \textbf{Hypothèses du test}
+    \begin{itemize}
+        \item \( H_0 \) : L’échantillon suit une loi normale \( \mathcal{N}(\mu, \sigma^2) \).
+        \item \( H_1 \) : L’échantillon ne suit pas une loi normale.
+    \end{itemize}
+    
+    \item[(B)] \textbf{Estimation du maximum de vraisemblance}
+    
+    Les estimateurs du maximum de vraisemblance pour \( \mu \) et \( \sigma^2 \) sont :
+    
+    \[
+    \hat{\mu} = \frac{1}{n} \sum_{i=1}^{n} x_i, \quad
+    \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \hat{\mu})^2
+    \]
+
+    \item[(C)] \textbf{Effectif théorique des classes}
+    
+    L’effectif théorique dans une classe \( [a, b] \) est donné par :
+    
+    \[
+    N_{[a,b]} = n \times (F(b) - F(a))
+    \]
+
+    où \( F \) est la fonction de répartition de la loi normale \( \mathcal{N}(\hat{\mu}, \hat{\sigma}^2) \).
+
+    \item[(D)] \textbf{Condition pour appliquer le test du \( \chi^2 \)}
+    
+    Pour que le test soit valide :
+    \begin{itemize}
+        \item Chaque classe doit contenir un effectif théorique d’au moins 5 observations.
+        \item Si certaines classes ont un effectif inférieur à 5, il faut les regrouper.
+    \end{itemize}
+    
+    \item[(E)] \textbf{Influence de \( \alpha \) et risque de première espèce}
+    
+    \( \alpha \) est le seuil de signification du test (\( 5\% \) par exemple), qui correspond au risque de première espèce (rejeter \( H_0 \) alors qu’elle est vraie). Plus \( \alpha \) est grand, plus le test est sensible, mais le risque d’erreur de type I augmente.
+\end{enumerate}
+
+\end{document}
